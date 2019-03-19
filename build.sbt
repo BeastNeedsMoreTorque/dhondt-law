@@ -7,3 +7,5 @@ scalaVersion := "2.12.2"
 scalaJSUseMainModuleInitializer := true
 
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.3"
+
+libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.6.7"

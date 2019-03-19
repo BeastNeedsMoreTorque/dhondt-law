@@ -3,6 +3,8 @@ package com.marimon.dhondt
 import org.scalajs.dom
 import org.scalajs.dom.document
 
+import scalatags.JsDom.all._
+
 import scala.collection.immutable.Seq
 
 case class Votes(party: String, count: Int) {
@@ -62,7 +64,7 @@ object MainApp {
   }
 
   def appendDistribution(targetNode: dom.Node, seats: Seq[Seats]): Unit = {
-    val parNode = document.createElement("p")
+    /*val parNode = document.createElement("p")
     val list = document.createElement("ul")
     seats.foreach(s => {
       val ul = document.createElement("li")
@@ -71,7 +73,19 @@ object MainApp {
       list.appendChild(ul)
     })
     parNode.appendChild(list)
-    targetNode.appendChild(parNode)
+    targetNode.appendChild(parNode)*/
+
+    val dataTable = table(
+      thead(tr(th("Party"), th("Seats"))),
+      seats.map { s =>
+        tr(
+          td(s.name),
+          td(s.seatCount)
+        )
+      }
+    ).render
+
+    targetNode.appendChild(dataTable)
   }
 
 }
